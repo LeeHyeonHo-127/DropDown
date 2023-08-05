@@ -28,17 +28,17 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         self.picker.delegate = self
         self.picker.dataSource = self
         distanceTextField.inputView = picker
-        self.picker.backgroundColor = UIColor.systemGray5
+        
         configToolbar()
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return distance[row]
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.distance.count
     }
@@ -49,10 +49,9 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     
     func configToolbar(){
         let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
         toolBar.tintColor = UIColor.black
-        toolBar.backgroundColor = UIColor.systemGray
+//        toolBar.backgroundColor = UIColor.systemGray2
         toolBar.sizeToFit()
         
         let doneButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(self.donePicker))
@@ -63,6 +62,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         toolBar.isUserInteractionEnabled = true
         
         self.distanceTextField.inputAccessoryView = toolBar
+        self.distanceTextField.inputAccessoryView?.backgroundColor = .systemGray2
     }
     
     // "완료" 클릭 시 데이터를 textfield에 입력 후 입력창 내리기
